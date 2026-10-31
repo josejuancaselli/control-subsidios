@@ -20,6 +20,15 @@ jobs:
         env:
           FIREBASE_SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
+          if [ -z "$FIREBASE_SA" ]; then echo "::error::Falta el secreto FIREBASE_SERVICE_ACCOUNT"; exit 1; fi
           echo "$FIREBASE_SA" > "$RUNNER_TEMP/sa.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
-          npx --yes firebase-tools@13 deploy --only hosting,firestore:rules --project control-subsidios --non-interactive
+          set +e
+          npx --yes firebase-tools@13 deploy --only hosting,firestore:rules --project control-subsidios --non-interactive > "$RUNNER_TEMP/out.txt" 2>&1
+          code=$?
+          cat "$RUNNER_TEMP/out.txt"
+          if [ $code -ne 0 ]; then
+            msg=$(tail -n 12 "$RUNNER_TEMP/out.txt" | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
+            echo "::error title=Fallo el deploy::$msg"
+          fi
+          exit $code
