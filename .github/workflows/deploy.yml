@@ -28,7 +28,7 @@ jobs:
           code=$?
           cat "$RUNNER_TEMP/out.txt"
           if [ $code -ne 0 ]; then
-            msg=$(tail -n 12 "$RUNNER_TEMP/out.txt" | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
+            msg=$(grep -v "npm warn" "$RUNNER_TEMP/out.txt" | sed "s/\x1b\[[0-9;]*m//g" | tail -n 14 | sed 's/%/%25/g' | awk '{printf "%s%%0A", $0}')
             echo "::error title=Fallo el deploy::$msg"
           fi
           exit $code
