@@ -1,0 +1,37 @@
+:root { --azul: #1f3864; --borde: #d0d7e2; --fondo: #f5f7fb; font-family: Arial, Helvetica, sans-serif; font-size: 14px; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fondo); color: #1b1f27; }
+.app { max-width: 1100px; margin: 0 auto; padding: 16px; }
+header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+h1 { margin: 0; color: var(--azul); font-size: 22px; }
+h2 { color: var(--azul); font-size: 16px; margin: 24px 0 6px; }
+h2 small { font-weight: normal; color: #6b7280; margin-left: 8px; }
+.acciones { display: flex; gap: 8px; }
+button, select { font: inherit; padding: 6px 12px; border: 1px solid var(--azul); background: var(--azul); color: #fff; border-radius: 4px; cursor: pointer; }
+select { background: #fff; color: var(--azul); }
+button:disabled { opacity: .5; cursor: default; }
+.aviso, .error { padding: 10px 12px; border-radius: 4px; background: #fff7d6; border: 1px solid #e6cf72; }
+.error { background: #fde8e8; border-color: #e5a0a0; }
+table { width: 100%; border-collapse: collapse; background: #fff; }
+th { background: var(--azul); color: #fff; font-weight: bold; padding: 7px 8px; text-align: center; font-size: 13px; }
+td { border: 1px solid var(--borde); padding: 0; }
+.resumen td { padding: 6px 8px; text-align: center; }
+.resumen td:first-child { text-align: left; }
+.resumen a { color: var(--azul); text-decoration: none; font-weight: bold; }
+.resumen .conv .vac { background: #f8cbad; color: #9c2b00; font-weight: bold; }
+.resumen .total td { background: #d9e1f2; font-weight: bold; }
+.scroll { overflow-x: auto; }
+.reg { min-width: 860px; }
+.reg input[type=text], .reg input:not([type]), .reg input[type=date] { width: 100%; border: 0; padding: 7px 8px; font: inherit; background: transparent; }
+.reg input:focus { outline: 2px solid #7aa2e3; outline-offset: -2px; background: #fff; }
+.reg td:nth-child(1) { width: 24%; } .reg td:nth-child(2) { width: 130px; } .reg td:nth-child(3) { width: 22%; }
+.reg td:nth-child(4) { width: 80px; } .reg td:nth-child(5) { width: 110px; } .reg td:nth-child(6) { width: 90px; } .reg td:nth-child(8) { width: 36px; }
+.centro { text-align: center; }
+.dias { color: #6b7280; font-size: 12px; }
+tr.libre td { background: #fafbfd; }
+.tag { padding: 2px 8px; border-radius: 10px; font-size: 12px; font-weight: bold; }
+.tag.vacante { background: #f8cbad; color: #9c2b00; }
+.tag.aconfirmar { background: #ffe699; color: #7f6000; }
+.tag.cubierto { background: #c6e0b4; color: #375623; }
+button.x { background: transparent; color: #9aa3b2; border: 0; padding: 4px 8px; }
+button.x:hover { color: #c0392b; }
